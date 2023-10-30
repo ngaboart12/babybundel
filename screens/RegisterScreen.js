@@ -48,18 +48,12 @@ const RegisterScreen = ({navigation}) => {
         <View style={{display:'flex',flexDirection:'column',gap:16}}>
             
             <View style={{display:'flex',flexDirection:'column',gap:6}}>
-                <Text style={{fontSize:16,color:'#000',fontWeight:400}}>Email account</Text>
+                <Text style={{fontSize:16,color:'#000',fontWeight:400}}>Email or Phone number</Text>
                 <View style={{height:60,backgroundColor:'#EAE6E6',padding:10}}>
                     <TextInput placeholder='Email account' style={styles.input} onChangeText={text => setEmail(text)} />
                 </View>
             </View>
 
-            <View style={{display:'flex',flexDirection:'column',gap:6}}>
-                <Text style={{fontSize:16,color:'#000',fontWeight:400}}>Phone number</Text>
-                <View style={{height:60,backgroundColor:'#EAE6E6',padding:10}}>
-                    <TextInput keyboardType='numeric' placeholder='Phone Number' style={styles.input} onChangeText={text => setPhone(text)} />
-                </View>
-            </View>
 
             <View style={{display:'flex',flexDirection:'column',gap:2}}>
                 <Text style={{fontSize:16,color:'#000',fontWeight:400}}>Password</Text>
@@ -71,14 +65,11 @@ const RegisterScreen = ({navigation}) => {
                 <TouchableOpacity onPress={handelSubmit} style={{backgroundColor:'#FFB648',height:60,justifyContent:'center',alignItems:'center'}}>
                     <Text style={{color:'#fff', fontSize:24}}>Sign Up</Text>
                 </TouchableOpacity>
+                <TouchableOpacity><Text>Sign Up With Phone Number</Text></TouchableOpacity>
                 <TouchableOpacity onPress={()=>navigation.navigate('login')} style={{justifyContent:'center'}}>
                     <Text style={{textAlign:'center',fontSize:16,fontWeight:'500'}}>Already have account? Login</Text>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={{paddingTop:10,display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',gap:8}}>
-            <AntDesign name="google" size={32} color="orange" />
-            <Text style={{fontSize:16}}>Sign In With Google</Text>
-            </TouchableOpacity>
         </View>
        </View>
     </View>

@@ -3,8 +3,13 @@ import { useFonts } from 'expo-font';
 import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../redux/Slices/userSlice';
+import { useNavigation } from '@react-navigation/native';
 
 export default function VerifyOtp({route}) {
+    const dispatch = useDispatch() 
+    const navigation = useNavigation()
     const {userId,email} = route.params;
     
   const inputRefs = [
@@ -44,7 +49,9 @@ if(!Fontsloaded){
         userId:userId,
         otp:enteredOTP
     }).then((response)=>{
-        console.log(response.data)
+        dispatch(addUser(userId,email))
+        navigation.navigate('homeTab')
+        
     })
    
     console.log('OTP to verify: ', enteredOTP);
