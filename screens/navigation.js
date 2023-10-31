@@ -20,6 +20,7 @@ import OrderScreen from "./OrderScreen";
 import NotoficationScreen from "./NotoficationScreen";
 import { useSelector } from "react-redux";
 import VerifyOtp from "./verifyOtp";
+import usePhone from "./UsePhonescreen";
 import AssistanceScreen from "./assisstant/AssistanceScreen";
 import AssitProductScreen from "./assisstant/AssProductListScreen";
 import AsscategoryScreen from "./assisstant/AssCategoryScreen";
@@ -246,6 +247,7 @@ export default function Navigation() {
         <Stack.Screen name="register" component={RegisterScreen} />
         <Stack.Screen name="login" component={LoginScreen} />
         <Stack.Screen name="verify" component={VerifyOtp} />
+        <Stack.Screen name="usephone" component={usePhone} />
         <Stack.Screen name="momopay" component={MomoPay} />
         <Stack.Screen name="category" component={CategoryScreen} />
         <Stack.Screen name="single" component={SingelProduct} />
