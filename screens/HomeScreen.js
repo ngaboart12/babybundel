@@ -36,13 +36,7 @@ const HomeScreen = ({ navigation }) => {
   const { data: allData, isFetching } = useGetuserQuery();
   const [category, setCategory] = useState();
   const [allProduct, setProduct] = useState();
-  const getCate = async () => {
-    await axios
-      .get("http:///192.168.1.67:6000/api/cate/getCategory")
-      .then((response) => {
-        setCategory(response.data);
-      });
-  };
+
   const { noti } = useSelector((state) => state.not);
 
   const falsevalue = noti.filter((item) => item.read === false);
@@ -57,9 +51,6 @@ const HomeScreen = ({ navigation }) => {
       });
   };
 
-  useEffect(() => {
-    getCate();
-  }, []);
   useEffect(() => {
     getProduct();
   }, []);

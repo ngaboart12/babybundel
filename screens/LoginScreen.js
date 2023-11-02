@@ -17,6 +17,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { AntDesign } from "@expo/vector-icons";
 import { addUser } from "../redux/Slices/userSlice";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -27,11 +29,14 @@ const LoginScreen = ({ navigation }) => {
 
   const handelSubmit = async (req, res) => {
     try {
-      const result = await login({ email, password }).unwrap();
-      if (result) {
-        dispatch(addUser(result));
-        navigation.navigate("home");
-      }
+      await signInWithEmailAndPassword(auth, email, password).then(() => {
+        const user = auth.currentUser;
+        if (user && user.emailVerified === true) {
+          navigation.navigate("homeTab");
+        } else {
+          window.alert("verify you email");
+        }
+      });
     } catch (err) {
       console.log(err);
     }

@@ -16,6 +16,12 @@ import { useFonts } from "expo-font";
 import { AntDesign } from "@expo/vector-icons";
 import { addUser } from "../redux/Slices/userSlice";
 import axios from "axios";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
+import { auth, db } from "../firebaseConfig";
+import { doc, addDoc, collection } from "firebase/firestore";
 
 const RegisterScreen = ({ navigation }) => {
   const [loaded] = useFonts({
@@ -23,22 +29,26 @@ const RegisterScreen = ({ navigation }) => {
   });
 
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handelSubmit = async () => {
-    await axios
-      .post("http://192.168.1.66:6000/api/auth/register", {
-        email: email,
-        phone: phone,
-        password: password,
-      })
-      .then((response) => {
-        navigation.navigate("verify", {
-          userId: response.data.data.userId,
-          email: response.data.data.email,
+    await createUserWithEmailAndPassword(auth, email, password).then(
+      async () => {
+        const usersCollection = collection(db, "users");
+        const user = auth.currentUser;
+        const docRef = addDoc(usersCollection, {
+          uid: user.uid,
+          username: username,
+          email: email,
+        }).then(async (response) => {
+          await sendEmailVerification(user);
+          window.alert("verify your email");
+          navigation.navigate("login");
         });
-      });
+      }
+    );
+    console.log("user");
   };
 
   return (
@@ -48,7 +58,7 @@ const RegisterScreen = ({ navigation }) => {
         source={require("../assets/image/header.png")}
         style={{ width: "100%", height: 200 }}
       ></ImageBackground>
-      <View style={{ padding: 20, gap: 24 }}>
+      <View style={{ padding: 8, gap: 24 }}>
         <View style={{ gap: 8 }}>
           <Text style={{ fontSize: 16, color: "#000", fontWeight: 400 }}>
             Welcome Back
@@ -85,7 +95,7 @@ const RegisterScreen = ({ navigation }) => {
                   <TextInput
                     placeholder="Your full name"
                     style={styles.input}
-                    onChangeText={(text) => setEmail(text)}
+                    onChangeText={(text) => setUsername(text)}
                   />
                 </View>
               </View>
