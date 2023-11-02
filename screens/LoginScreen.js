@@ -84,9 +84,7 @@ const LoginScreen = ({ navigation }) => {
                     onChangeText={(text) => setEmail(text)}
                   />
                 </View>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("usephone")}
-                >
+                <TouchableOpacity onPress={() => navigation.navigate("phone")}>
                   <Text
                     style={{
                       fontSize: 14,

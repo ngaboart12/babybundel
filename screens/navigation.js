@@ -21,6 +21,7 @@ import NotoficationScreen from "./NotoficationScreen";
 import { useSelector } from "react-redux";
 import VerifyOtp from "./verifyOtp";
 import usePhone from "./UsePhonescreen";
+import PhoneOtp from "./PhoneOtp";
 import AssistanceScreen from "./assisstant/AssistanceScreen";
 import AssitProductScreen from "./assisstant/AssProductListScreen";
 import AsscategoryScreen from "./assisstant/AssCategoryScreen";
@@ -39,11 +40,7 @@ const DrawerTab = () => {
 };
 
 const HomeTab = () => {
-  const { noti } = useSelector((state) => state.not);
-
-  const falsevalue = noti.filter((item) => item.read === false);
-  const count = falsevalue.length;
-  console.log(count);
+  const cart = useSelector((state) => state.cart.cart);
   return (
     <Bottom.Navigator
       activeColor="#e91e63"
@@ -96,7 +93,7 @@ const HomeTab = () => {
       />
 
       <Bottom.Screen
-        name="cart"
+        name="assist"
         options={{
           tabBarLabel: false,
           tabBarIcon: ({ color }) => (
@@ -128,91 +125,48 @@ const HomeTab = () => {
             </View>
           ),
         }}
+        component={AssistanceScreen}
+      />
+      <Bottom.Screen
+        name="cart"
+        options={{
+          tabBarLabel: false,
+          tabBarIcon: ({ color }) => (
+            <View>
+              <Svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <Path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M11.7808 2.00031C14.3946 2.00031 16.5539 3.99196 16.8202 6.53923L16.8945 6.54011C18.3445 6.54011 20.1075 7.5031 20.7025 10.2041L21.4915 16.3111C21.7745 18.2821 21.4205 19.8631 20.4375 20.9971C19.4595 22.1251 17.9115 22.7221 15.9605 22.7221H7.61247C5.46947 22.7221 3.97647 22.1971 3.04747 21.1181C2.11447 20.0361 1.80247 18.4131 2.12047 16.2951L2.89647 10.2691C3.40647 7.5061 5.27147 6.54011 6.71547 6.54011C6.84013 5.39058 7.35847 4.29701 8.18077 3.47731C9.12577 2.53831 10.4288 2.00031 11.7598 2.00031H11.7808ZM16.8945 8.04011H6.71547C6.27447 8.04011 4.80047 8.2181 4.37747 10.5021L3.60547 16.5021C3.35447 18.1851 3.54847 19.4031 4.18347 20.1401C4.81047 20.8681 5.93247 21.2221 7.61247 21.2221H15.9605C17.0085 21.2221 18.4395 21.0131 19.3035 20.0151C19.9895 19.2241 20.2255 18.0461 20.0055 16.5131L19.2265 10.4611C18.8945 8.9701 18.0185 8.04011 16.8945 8.04011ZM14.6973 10.8242C15.1113 10.8242 15.4703 11.1602 15.4703 11.5742C15.4703 11.9882 15.1573 12.3242 14.7433 12.3242H14.6973C14.2833 12.3242 13.9473 11.9882 13.9473 11.5742C13.9473 11.1602 14.2833 10.8242 14.6973 10.8242ZM8.86717 10.8242C9.28117 10.8242 9.64017 11.1602 9.64017 11.5742C9.64017 11.9882 9.32617 12.3242 8.91217 12.3242H8.86717C8.45317 12.3242 8.11717 11.9882 8.11717 11.5742C8.11717 11.1602 8.45317 10.8242 8.86717 10.8242ZM11.7778 3.50031H11.7628C10.8218 3.50031 9.90477 3.87931 9.23977 4.54031C8.69807 5.07957 8.34379 5.7885 8.22918 6.53964L15.3085 6.53992C15.0515 4.82168 13.5657 3.50031 11.7778 3.50031Z"
+                  fill="#8E8D8D"
+                />
+              </Svg>
+              <View
+                style={{
+                  position: "absolute",
+                  right: -8,
+                  width: 20,
+                  minheight: 20,
+                  backgroundColor: "orange",
+                  borderRadius: 20,
+                }}
+              >
+                <Text style={{ textAlign: "center", color: "white" }}>
+                  {cart.length}
+                </Text>
+              </View>
+            </View>
+          ),
+        }}
         component={CartScreen}
       />
 
-      <Bottom.Screen
-        name="Notification"
-        options={{
-          tabBarLabel: false,
-          tabBarIcon: ({ color }) => {
-            if (falsevalue.length > 0) {
-              return (
-                <View>
-                  <Svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <Path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12 17.8476C17.6392 17.8476 20.2481 17.1242 20.5 14.2205C20.5 11.3188 18.6812 11.5054 18.6812 7.94511C18.6812 5.16414 16.0452 2 12 2C7.95477 2 5.31885 5.16414 5.31885 7.94511C5.31885 11.5054 3.5 11.3188 3.5 14.2205C3.75295 17.1352 6.36177 17.8476 12 17.8476Z"
-                      stroke="#8E8D8D"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <Path
-                      d="M14.3888 20.8572C13.0247 22.3719 10.8967 22.3899 9.51947 20.8572"
-                      stroke="#8E8D8D"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </Svg>
-                  <View
-                    style={{
-                      left: 12,
-                      top: 0,
-                      position: "absolute",
-                      backgroundColor: "darkred",
-                      width: 15,
-                      height: 15,
-                      borderRadius: 10,
-                      alignItems: "center",
-                    }}
-                  >
-                    <Text style={{ textAlign: "center", color: "white" }}>
-                      {falsevalue.length}
-                    </Text>
-                  </View>
-                </View>
-              );
-            } else {
-              return (
-                <Svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <Path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12 17.8476C17.6392 17.8476 20.2481 17.1242 20.5 14.2205C20.5 11.3188 18.6812 11.5054 18.6812 7.94511C18.6812 5.16414 16.0452 2 12 2C7.95477 2 5.31885 5.16414 5.31885 7.94511C5.31885 11.5054 3.5 11.3188 3.5 14.2205C3.75295 17.1352 6.36177 17.8476 12 17.8476Z"
-                    stroke="#8E8D8D"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <Path
-                    d="M14.3888 20.8572C13.0247 22.3719 10.8967 22.3899 9.51947 20.8572"
-                    stroke="#8E8D8D"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </Svg>
-              );
-            }
-          },
-        }}
-        component={NotoficationScreen}
-      />
       <Bottom.Screen
         name="profile"
         options={{
@@ -248,6 +202,7 @@ export default function Navigation() {
         <Stack.Screen name="login" component={LoginScreen} />
         <Stack.Screen name="verify" component={VerifyOtp} />
         <Stack.Screen name="usephone" component={usePhone} />
+        <Stack.Screen name="phone" component={PhoneOtp} />
         <Stack.Screen name="momopay" component={MomoPay} />
         <Stack.Screen name="category" component={CategoryScreen} />
         <Stack.Screen name="single" component={SingelProduct} />
@@ -256,6 +211,7 @@ export default function Navigation() {
         <Stack.Screen name="asscategory" component={AsscategoryScreen} />
         <Stack.Screen name="assproducts" component={AssitProductScreen} />
         <Stack.Screen name="homeTab" component={HomeTab} />
+        <Stack.Screen name="cart" component={CartScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

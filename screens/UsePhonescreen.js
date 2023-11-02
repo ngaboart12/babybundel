@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
@@ -96,6 +98,7 @@ const RegisterScreen = ({ navigation }) => {
                   Phone number
                 </Text>
                 <View
+                  keyboardShouldPersistTaps={false}
                   style={{
                     height: 60,
                     backgroundColor: "#EAE6E6",
@@ -109,6 +112,7 @@ const RegisterScreen = ({ navigation }) => {
                     onChangeText={(text) => setPhone(text)}
                   />
                 </View>
+
                 <TouchableOpacity onPress={() => navigation.navigate("login")}>
                   <Text
                     style={{
