@@ -49,20 +49,21 @@ const LoginScreen = ({ navigation }) => {
         source={require("../assets/image/header.png")}
         style={{ width: "100%", height: 200 }}
       ></ImageBackground>
-      <View style={{ padding: 20, gap: 24 }}>
-        <View style={{ gap: 8 }}>
-          <Text style={{ fontSize: 16, color: "#000", fontWeight: 400 }}>
-            Welcome Back
-          </Text>
-          <Text
-            style={{ height: 2, width: 50, backgroundColor: "#000" }}
-          ></Text>
-          <Text style={{ fontSize: 36, color: "#FFB648", fontWeight: 800 }}>
-            Sign In
-          </Text>
-        </View>
-        <View>
-          <ScrollView>
+      <View style={{ height: "70%" }}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ padding: 20, gap: 24 }}>
+            <View style={{ gap: 8 }}>
+              <Text style={{ fontSize: 16, color: "#000", fontWeight: 400 }}>
+                Welcome Back
+              </Text>
+              <Text
+                style={{ height: 2, width: 50, backgroundColor: "#000" }}
+              ></Text>
+              <Text style={{ fontSize: 32, color: "#FFB648", fontWeight: 800 }}>
+                Sign In
+              </Text>
+            </View>
+
             <View
               style={{
                 display: "flex",
@@ -240,8 +241,8 @@ const LoginScreen = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </ScrollView>
-        </View>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
