@@ -30,6 +30,7 @@
     "expo-asset": "~8.10.1",
     "expo-checkbox": "~2.4.0",
     "expo-font": "~11.4.0",
+    "expo-image": "^1.5.1",
     "expo-status-bar": "~1.6.0",
     "firebase": "^10.5.2",
     "otp-input-react": "^0.3.0",

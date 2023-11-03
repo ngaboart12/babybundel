@@ -89,8 +89,6 @@ const styles = StyleSheet.create({
   title: {
     color: "#fff",
     fontSize: 18,
-    
-   
   },
   titleContent: {
     alignItems: "center",
@@ -99,12 +97,11 @@ const styles = StyleSheet.create({
   titleContentHeader: {
     color: "#fff",
     fontSize: 20,
- 
   },
   titleContentText: {
     color: "#E8E8E8",
     fontSize: 14,
- 
+
     paddingTop: 20,
     paddingHorizontal: 55,
   },
@@ -129,7 +126,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 126,
     paddingBottom: 16,
     fontSize: 20,
- 
+
     color: "#fff",
     alignItems: "center",
   },

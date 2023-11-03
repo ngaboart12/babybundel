@@ -365,7 +365,7 @@ const HomeScreen = ({ navigation }) => {
               >
                 Categories
               </Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("category")}>
                 <Text style={{ fontSize: 14, color: "#FFB648" }}>View all</Text>
               </TouchableOpacity>
             </View>

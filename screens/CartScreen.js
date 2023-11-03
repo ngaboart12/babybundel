@@ -90,7 +90,7 @@ const CartScreen = ({ navigation }) => {
                   </View>
                 </View>
                 <Image
-                  source={{ uri: `${item.image}` }}
+                  source={{ uri: `${item.url}` }}
                   style={{ width: 100, height: 100 }}
                 />
               </View>

@@ -85,7 +85,7 @@ const HomeTab = () => {
       />
 
       <Bottom.Screen
-        name="assist"
+        name="componentt"
         options={{
           tabBarStyle: { display: "none" },
           tabBarLabel: false,
