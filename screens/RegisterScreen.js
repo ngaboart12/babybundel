@@ -34,42 +34,6 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   const handelSubmit = async () => {
-<<<<<<< HEAD
-
-  };
-
-  return (
-    <View>
-      <StatusBar style="light" />
-      <ImageBackground
-        source={require("../assets/image/header.png")}
-        style={{ width: "100%", height: 200 }}
-      ></ImageBackground>
-      <View style={{ padding: 20, gap: 24 }}>
-        <View style={{ gap: 8 }}>
-          <Text style={{ fontSize: 16, color: "#000", fontWeight: 400 }}>
-            Welcome Back
-          </Text>
-          <Text
-            style={{ height: 2, width: 50, backgroundColor: "#000" }}
-          ></Text>
-          <Text style={{ fontSize: 34, color: "#FFB648", fontWeight: 700 }}>
-            Sign Up
-          </Text>
-        </View>
-        <View style={{height:'60%'}}>
-          <ScrollView>
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-              }}
-            >
-              <View
-                style={{ display: "flex", flexDirection: "column", gap: 6 }}
-              >
-=======
     await createUserWithEmailAndPassword(auth, email, password).then(
       async () => {
         const usersCollection = collection(db, "users");
@@ -100,7 +64,6 @@ const RegisterScreen = ({ navigation }) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ padding: 20, gap: 24 }}>
               <View style={{ gap: 8 }}>
->>>>>>> 0d291aab97ee425e13090be48ba2960439c577d9
                 <Text style={{ fontSize: 16, color: "#000", fontWeight: 400 }}>
                   Welcome
                 </Text>

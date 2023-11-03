@@ -21,8 +21,8 @@ import { logout } from "../redux/Slices/userSlice";
 import axios from "axios";
 import io from "socket.io-client";
 import { addToNot } from "../redux/Slices/notSlice";
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import {db} from '../firebaseConfig'
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 const HomeScreen = ({ navigation }) => {
   const [not, setNot] = useState("");
@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const productsCollection = collection(db, 'products'); // Replace with your collection name
+        const productsCollection = collection(db, "products"); // Replace with your collection name
 
         const querySnapshot = await getDocs(productsCollection);
 
@@ -60,7 +60,7 @@ const HomeScreen = ({ navigation }) => {
 
         setProducts(productsData);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     };
 
@@ -69,7 +69,7 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const productsCollection = collection(db, 'category'); // Replace with your collection name
+        const productsCollection = collection(db, "category"); // Replace with your collection name
 
         const querySnapshot = await getDocs(productsCollection);
 
@@ -78,31 +78,15 @@ const HomeScreen = ({ navigation }) => {
           ...doc.data(),
         }));
 
-        console.log(productsData)
+        console.log(productsData);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     };
 
     fetchCategory();
   }, []);
 
-
-
- 
-
- 
-  const testSocket = () => {
-    const socket = io("http://192.168.1.67:6000");
-
-    socket.on("from backend", (msg) => {
-      dispatch(addToNot(msg));
-    });
-  };
-
-  useEffect(() => {
-    testSocket();
-  }, []);
   const [Fontsloaded] = useFonts({
     indieflower: require("../assets/fonts/IndieFlower-Regular.ttf"),
     Outfit: require("../assets/fonts/NotoSansNKoUnjoined-VariableFont_wght.ttf"),
@@ -334,7 +318,7 @@ const HomeScreen = ({ navigation }) => {
             <Text>Logout</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.discover}>
             <ImageBackground
               source={require("../assets/image/header.png")}

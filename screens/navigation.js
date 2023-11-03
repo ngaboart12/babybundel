@@ -10,13 +10,14 @@ import HomeScreen from "./HomeScreen";
 import OnboardingScreen from "./OnboardingScreen";
 import CartScreen from "./CartScreen";
 import { Text, View } from "react-native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+
 import CategoryScreen from "./CategoryScreen";
 import PopularScreen from "./PopularScreen";
 import SingelProduct from "./SingelProduct";
 import FavScreen from "./FavScreen";
 import MomoPay from "./MomoPay";
 import OrderScreen from "./OrderScreen";
+import ProfileScreen from "./ProfileScreen";
 import NotoficationScreen from "./NotoficationScreen";
 import { useSelector } from "react-redux";
 import VerifyOtp from "./verifyOtp";
@@ -27,16 +28,6 @@ import AsscategoryScreen from "./assisstant/AssCategoryScreen";
 
 const Stack = createStackNavigator();
 const Bottom = createMaterialBottomTabNavigator();
-const Drawer = createDrawerNavigator();
-
-const DrawerTab = () => {
-  return (
-    <Drawer.Navigator screenOptions={{ headerShown: false }}>
-      <Drawer.Screen name="homee" component={HomeScreen} />
-      <Drawer.Screen name="order" component={OrderScreen} />
-    </Drawer.Navigator>
-  );
-};
 
 const HomeTab = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -44,11 +35,13 @@ const HomeTab = () => {
     <Bottom.Navigator
       activeColor="#e91e63"
       barStyle={{ height: 65, backgroundColor: "transparent" }}
+      screenOptions={{ headerShown: false }}
     >
       <Bottom.Screen
         name="home"
         options={{
           tabBarLabel: false,
+
           tabBarIcon: ({ color }) => (
             <Svg
               xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +57,7 @@ const HomeTab = () => {
             </Svg>
           ),
         }}
-        component={DrawerTab}
+        component={HomeScreen}
       />
 
       <Bottom.Screen
@@ -94,7 +87,9 @@ const HomeTab = () => {
       <Bottom.Screen
         name="assist"
         options={{
+          tabBarStyle: { display: "none" },
           tabBarLabel: false,
+
           tabBarIcon: ({ color }) => (
             <View
               style={{
@@ -130,6 +125,7 @@ const HomeTab = () => {
         name="cart"
         options={{
           tabBarLabel: false,
+
           tabBarIcon: ({ color }) => (
             <View>
               <Svg
@@ -187,7 +183,7 @@ const HomeTab = () => {
             </Svg>
           ),
         }}
-        component={CartScreen}
+        component={ProfileScreen}
       />
     </Bottom.Navigator>
   );
@@ -200,6 +196,7 @@ export default function Navigation() {
         <Stack.Screen name="register" component={RegisterScreen} />
         <Stack.Screen name="login" component={LoginScreen} />
         <Stack.Screen name="verify" component={VerifyOtp} />
+        <Stack.Screen name="profile" component={ProfileScreen} />
 
         <Stack.Screen name="momopay" component={MomoPay} />
         <Stack.Screen name="category" component={CategoryScreen} />
