@@ -21,6 +21,8 @@ import { logout } from "../redux/Slices/userSlice";
 import axios from "axios";
 import io from "socket.io-client";
 import { addToNot } from "../redux/Slices/notSlice";
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import {db} from '../firebaseConfig'
 
 const HomeScreen = ({ navigation }) => {
   const [not, setNot] = useState("");
@@ -36,33 +38,58 @@ const HomeScreen = ({ navigation }) => {
   const { data: allData, isFetching } = useGetuserQuery();
   const [category, setCategory] = useState();
   const [allProduct, setProduct] = useState();
-  const getCate = async () => {
-    await axios
-      .get("http:///192.168.1.67:6000/api/cate/getCategory")
-      .then((response) => {
-        setCategory(response.data);
-      });
-  };
+  const [products, setProducts] = useState([]);
   const { noti } = useSelector((state) => state.not);
 
   const falsevalue = noti.filter((item) => item.read === false);
   const count = falsevalue.length;
   console.log(count);
-
-  const getProduct = async () => {
-    await axios
-      .get("http://192.168.1.67:6000/api/user/allproduct")
-      .then((response) => {
-        setProduct(response.data);
-      });
-  };
-
   useEffect(() => {
-    getCate();
+    const fetchProducts = async () => {
+      try {
+        const productsCollection = collection(db, 'products'); // Replace with your collection name
+
+        const querySnapshot = await getDocs(productsCollection);
+
+        const productsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setProducts(productsData);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
   useEffect(() => {
-    getProduct();
+    const fetchCategory = async () => {
+      try {
+        const productsCollection = collection(db, 'category'); // Replace with your collection name
+
+        const querySnapshot = await getDocs(productsCollection);
+
+        const productsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        console.log(productsData)
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchCategory();
   }, []);
+
+
+
+ 
+
+ 
   const testSocket = () => {
     const socket = io("http://192.168.1.67:6000");
 
@@ -668,7 +695,7 @@ const HomeScreen = ({ navigation }) => {
               }}
             >
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {allProduct?.map((item, index) => (
+                {products?.map((item, index) => (
                   <HotSales data={item} key={index} />
                 ))}
               </ScrollView>
@@ -692,12 +719,12 @@ const HomeScreen = ({ navigation }) => {
               </TouchableOpacity>
             </View>
             <View>
-              {!allProduct ? (
+              {!products ? (
                 <Text>Loading....</Text>
               ) : (
                 <FlatList
                   numColumns={numColumns2}
-                  data={allProduct}
+                  data={products}
                   renderItem={({ item, index }) => {
                     return <Product data={item} key={index} />;
                   }}

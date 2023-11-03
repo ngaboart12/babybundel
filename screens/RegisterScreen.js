@@ -27,18 +27,7 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   const handelSubmit = async () => {
-    await axios
-      .post("http://192.168.1.66:6000/api/auth/register", {
-        email: email,
-        phone: phone,
-        password: password,
-      })
-      .then((response) => {
-        navigation.navigate("verify", {
-          userId: response.data.data.userId,
-          email: response.data.data.email,
-        });
-      });
+
   };
 
   return (
@@ -60,7 +49,7 @@ const RegisterScreen = ({ navigation }) => {
             Sign Up
           </Text>
         </View>
-        <View>
+        <View style={{height:'60%'}}>
           <ScrollView>
             <View
               style={{

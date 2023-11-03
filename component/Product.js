@@ -10,7 +10,7 @@ import { AntDesign } from "@expo/vector-icons";
 const Product = (props) => {
   const navigation = useNavigation();
 
-  const { name, image, price, _id } = props.data;
+  const { name, url, price, _id } = props.data;
   const dispatch = useDispatch();
   const addItemToCart = (item) => {
     dispatch(addToCart(item));
@@ -36,7 +36,7 @@ const Product = (props) => {
     >
       <View style={{ width: 150, height: 140 }}>
         <Image
-          source={{ uri: `${image}` }}
+          source={{ uri: `${url}` }}
           style={{ width: "100%", height: 140, objectFit: "contain" }}
         />
       </View>

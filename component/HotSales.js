@@ -7,11 +7,11 @@ import { addToCart } from "../redux/Slices/cartSlice";
 
 const HotSales = (props) => {
   const dispatch = useDispatch();
-  const { name, image, price } = props.data;
+  const { name, url, price } = props.data;
   return (
     <TouchableOpacity style={{ width: 120, gap: 4, marginRight: 20 }}>
       <ImageBackground
-        source={{ uri: `${image}` }}
+        source={{ uri: `${url}` }}
         style={{ width: "100%", height: 100 }}
       >
         <TouchableOpacity
