@@ -38,7 +38,9 @@ const HomeScreen = ({ navigation }) => {
   const { data: allData, isFetching } = useGetuserQuery();
   const [category, setCategory] = useState();
   const [allProduct, setProduct] = useState();
+
   const [products, setProducts] = useState([]);
+
   const { noti } = useSelector((state) => state.not);
 
   const falsevalue = noti.filter((item) => item.read === false);

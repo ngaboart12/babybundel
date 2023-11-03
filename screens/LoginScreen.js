@@ -17,6 +17,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { AntDesign } from "@expo/vector-icons";
 import { addUser } from "../redux/Slices/userSlice";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -27,11 +29,14 @@ const LoginScreen = ({ navigation }) => {
 
   const handelSubmit = async (req, res) => {
     try {
-      const result = await login({ email, password }).unwrap();
-      if (result) {
-        dispatch(addUser(result));
-        navigation.navigate("home");
-      }
+      await signInWithEmailAndPassword(auth, email, password).then(() => {
+        const user = auth.currentUser;
+        if (user && user.emailVerified === true) {
+          navigation.navigate("homeTab");
+        } else {
+          window.alert("verify you email");
+        }
+      });
     } catch (err) {
       console.log(err);
     }
@@ -44,20 +49,21 @@ const LoginScreen = ({ navigation }) => {
         source={require("../assets/image/header.png")}
         style={{ width: "100%", height: 200 }}
       ></ImageBackground>
-      <View style={{ padding: 20, gap: 24 }}>
-        <View style={{ gap: 8 }}>
-          <Text style={{ fontSize: 16, color: "#000", fontWeight: 400 }}>
-            Welcome Back
-          </Text>
-          <Text
-            style={{ height: 2, width: 50, backgroundColor: "#000" }}
-          ></Text>
-          <Text style={{ fontSize: 36, color: "#FFB648", fontWeight: 800 }}>
-            Sign In
-          </Text>
-        </View>
-        <View>
-          <ScrollView>
+      <View style={{ height: "70%" }}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ padding: 20, gap: 24 }}>
+            <View style={{ gap: 8 }}>
+              <Text style={{ fontSize: 16, color: "#000", fontWeight: 400 }}>
+                Welcome Back
+              </Text>
+              <Text
+                style={{ height: 2, width: 50, backgroundColor: "#000" }}
+              ></Text>
+              <Text style={{ fontSize: 32, color: "#FFB648", fontWeight: 800 }}>
+                Sign In
+              </Text>
+            </View>
+
             <View
               style={{
                 display: "flex",
@@ -235,8 +241,8 @@ const LoginScreen = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </ScrollView>
-        </View>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );

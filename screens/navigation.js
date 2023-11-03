@@ -200,7 +200,7 @@ export default function Navigation() {
         <Stack.Screen name="register" component={RegisterScreen} />
         <Stack.Screen name="login" component={LoginScreen} />
         <Stack.Screen name="verify" component={VerifyOtp} />
- 
+
         <Stack.Screen name="momopay" component={MomoPay} />
         <Stack.Screen name="category" component={CategoryScreen} />
         <Stack.Screen name="single" component={SingelProduct} />
