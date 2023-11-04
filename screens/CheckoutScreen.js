@@ -6,6 +6,7 @@ import {
   TextInput,
   Modal,
   Pressable,
+  Button,
 } from "react-native";
 import CheckBox from "expo-checkbox";
 import React, { useState } from "react";
@@ -28,10 +29,16 @@ const CheckoutScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const [isChecked, setChecked] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalcheckout, setModalcheckout] = useState(false);
 
   const ChangeAddress = () => {
     navigation.navigate("checkout");
     setModalVisible(!modalVisible);
+  };
+
+  const checkout = () => {
+    navigation.navigate("order");
+    setModalcheckout(!modalcheckout);
   };
   return (
     <View style={{ width: "100%", height: "100%" }}>
@@ -185,47 +192,188 @@ const CheckoutScreen = ({ navigation }) => {
               </TouchableOpacity>
 
               <Modal
+                animationType="fade"
                 transparent={true}
-                animationType="slide"
                 visible={modalVisible}
                 onRequestClose={() => {
                   setModalVisible(!modalVisible);
                 }}
               >
-                <View
-                  style={{
-                    height: 255,
-                    backgroundColor: "#ffb648",
-                    bottom: 0,
-                    position: "absolute",
-                    width: "100%",
-                  }}
-                >
-                  <TextInput
-                    placeholder="Kigali, Rwanda"
-                    placeholderTextColor={"black"}
-                    style={{
-                      backgroundColor: "transparent",
-                      width: "72%",
-                      height: "10%",
-                      fontSize: 16,
-                      fontWeight: 600,
-                      alignSelf: "center",
-                    }}
-                  />
+                <View style={styles.modalContainer}>
+                  <View style={styles.modalContent}>
+                    <Text>This is a pop-up modal</Text>
 
-                  <Pressable onPress={ChangeAddress}>
-                    <Text
+                    <View
                       style={{
-                        color: "#000",
-                        padding: 20,
-                        borderWidth: 1,
-                        borderBlockColor: "#fff",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        paddingBottom: 15,
                       }}
                     >
-                      go back
-                    </Text>
-                  </Pressable>
+                      <Text
+                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                      >
+                        Password
+                      </Text>
+                      <View
+                        style={{
+                          height: 60,
+                          backgroundColor: "#EAE6E6",
+                          padding: 10,
+
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <TextInput
+                          placeholder="Create Password"
+                          placeholderTextColor="black"
+                          style={{
+                            backgroundColor: "transparent",
+                            width: "80%",
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        paddingBottom: 15,
+                      }}
+                    >
+                      <Text
+                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                      >
+                        Password
+                      </Text>
+                      <View
+                        style={{
+                          height: 60,
+                          backgroundColor: "#EAE6E6",
+                          padding: 10,
+
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <TextInput
+                          placeholder="Create Password"
+                          placeholderTextColor="black"
+                          style={{
+                            backgroundColor: "transparent",
+                            width: "80%",
+                            height: "100%",
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        paddingBottom: 15,
+                      }}
+                    >
+                      <Text
+                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                      >
+                        Password
+                      </Text>
+                      <View
+                        style={{
+                          height: 60,
+                          backgroundColor: "#EAE6E6",
+                          padding: 10,
+
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <TextInput
+                          placeholder="Create Password"
+                          placeholderTextColor="black"
+                          style={{
+                            backgroundColor: "transparent",
+                            width: "80%",
+                            height: "100%",
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        paddingBottom: 15,
+                      }}
+                    >
+                      <Text
+                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                      >
+                        Password
+                      </Text>
+                      <View
+                        style={{
+                          height: 60,
+                          backgroundColor: "#EAE6E6",
+                          padding: 10,
+
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <TextInput
+                          placeholder="Create Password"
+                          placeholderTextColor="black"
+                          style={{
+                            backgroundColor: "transparent",
+                            width: "80%",
+                            height: "100%",
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        paddingBottom: 15,
+                      }}
+                    >
+                      <Text
+                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                      >
+                        Password
+                      </Text>
+                      <View
+                        style={{
+                          height: 60,
+                          backgroundColor: "#EAE6E6",
+                          padding: 10,
+
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <TextInput
+                          placeholder="Create Password"
+                          placeholderTextColor="black"
+                          style={{
+                            backgroundColor: "transparent",
+                            width: "80%",
+                            height: "100%",
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <Button title="Close Modal" onPress={ChangeAddress} />
+                  </View>
                 </View>
               </Modal>
             </View>
@@ -309,6 +457,7 @@ const CheckoutScreen = ({ navigation }) => {
       >
         <View style={{ width: "100%", height: 55, paddingHorizontal: 24 }}>
           <TouchableOpacity
+            onPress={() => setModalcheckout(true)}
             style={{
               backgroundColor: "#FFB648",
               height: 55,
@@ -319,6 +468,90 @@ const CheckoutScreen = ({ navigation }) => {
               Chek it Out
             </Text>
           </TouchableOpacity>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalcheckout}
+            onRequestClose={() => {
+              setModalVisible(!modalcheckout);
+            }}
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <Text>This is a pop-up modal</Text>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 6,
+                    paddingBottom: 15,
+                  }}
+                >
+                  <Text
+                    style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                  >
+                    Password
+                  </Text>
+                  <View
+                    style={{
+                      height: 60,
+                      backgroundColor: "#EAE6E6",
+                      padding: 10,
+
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <TextInput
+                      placeholder="Create Password"
+                      placeholderTextColor="black"
+                      style={{
+                        backgroundColor: "transparent",
+                        width: "80%",
+                        height: "100%",
+                      }}
+                    />
+                  </View>
+                </View>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 6,
+                    paddingBottom: 15,
+                  }}
+                >
+                  <Text
+                    style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                  >
+                    Password
+                  </Text>
+                  <View
+                    style={{
+                      height: 60,
+                      backgroundColor: "#EAE6E6",
+                      padding: 10,
+
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <TextInput
+                      placeholder="Create Password"
+                      placeholderTextColor="black"
+                      style={{
+                        backgroundColor: "transparent",
+                        width: "80%",
+                        height: "100%",
+                      }}
+                    />
+                  </View>
+                </View>
+                <Button title="Close Modal" onPress={checkout} />
+              </View>
+            </View>
+          </Modal>
         </View>
       </View>
     </View>
@@ -345,6 +578,72 @@ const styles = StyleSheet.create({
     marginTop: 43,
     borderRadius: 4,
   },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    gap: 8,
+  },
+  modalContent: {
+    width: "100%",
+    backgroundColor: "white",
+    padding: 24,
+
+    position: "absolute",
+    bottom: 0,
+  },
 });
+// const CheckoutScreen = () => {
+//   const [isModalVisible, setModalVisible] = useState(false);
+
+//   const toggleModal = () => {
+//     setModalVisible(!isModalVisible);
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       <Button title="Show Modal" onPress={toggleModal} />
+
+//       <Modal
+//         animationType="slide" // You can use 'fade', 'slide', or 'none'
+//         transparent={true}
+//         visible={isModalVisible}
+//         onRequestClose={toggleModal} // Android back button support
+//       >
+//         <View style={styles.modalContainer}>
+//           <View style={styles.modalContent}>
+//             <Text>This is a pop-up modal</Text>
+//             <Button title="Close Modal" onPress={toggleModal} />
+//           </View>
+//         </View>
+//       </Modal>
+//     </View>
+//   );
+// };
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   modalContainer: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "rgba(0, 0, 0, 0.5)",
+//   },
+//   modalContent: {
+//     width: 300,
+//     backgroundColor: "white",
+//     padding: 20,
+//     borderRadius: 10,
+//   },
+// });
 
 export default CheckoutScreen;
