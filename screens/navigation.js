@@ -12,6 +12,7 @@ import CartScreen from "./CartScreen";
 import { Text, View } from "react-native";
 
 import CategoryScreen from "./CategoryScreen";
+import CheckoutScreen from "./CheckoutScreen";
 import PopularScreen from "./PopularScreen";
 import SingelProduct from "./SingelProduct";
 import FavScreen from "./FavScreen";
@@ -200,6 +201,7 @@ export default function Navigation() {
 
         <Stack.Screen name="momopay" component={MomoPay} />
         <Stack.Screen name="category" component={CategoryScreen} />
+        <Stack.Screen name="checkout" component={CheckoutScreen} />
         <Stack.Screen name="single" component={SingelProduct} />
         <Stack.Screen name="popular" component={PopularScreen} />
         <Stack.Screen name="assist" component={AssistanceScreen} />

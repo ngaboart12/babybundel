@@ -4,7 +4,7 @@ import Svg, { Path, Rect } from "react-native-svg";
 import Icon from "react-native-vector-icons/Feather";
 import IconFont from "react-native-vector-icons/Ionicons";
 
-const AssitProductScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <>
       <View style={styles.page}>
@@ -347,7 +347,7 @@ const AssitProductScreen = ({ navigation }) => {
   );
 };
 
-export default AssitProductScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   page: {

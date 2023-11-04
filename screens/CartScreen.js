@@ -224,6 +224,7 @@ const CartScreen = ({ navigation }) => {
               height: 60,
               justifyContent: "center",
             }}
+            onPress={() => navigation.navigate("checkout")}
           >
             <Text style={{ textAlign: "center", color: "white", fontSize: 16 }}>
               Chek it Out
