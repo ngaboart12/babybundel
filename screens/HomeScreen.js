@@ -371,7 +371,7 @@ const HomeScreen = ({ navigation }) => {
             </View>
             <View style={styles.categoryContainAll}>
               <View style={styles.categoryContain}>
-                <TouchableOpacity
+                <TouchableOpacity onPress={()=> navigation.navigate('product', {cate:'Toys'})}
                   style={{
                     backgroundColor: "#FFF4E3",
                     height: 150,

@@ -26,6 +26,7 @@ import VerifyOtp from "./verifyOtp";
 import AssistanceScreen from "./assisstant/AssistanceScreen";
 import AssitProductScreen from "./assisstant/AssProductListScreen";
 import AsscategoryScreen from "./assisstant/AssCategoryScreen";
+import ProductCategory from "./ProductCategory";
 
 const Stack = createStackNavigator();
 const Bottom = createMaterialBottomTabNavigator();
@@ -195,6 +196,7 @@ export default function Navigation() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="onboard" component={OnboardingScreen} />
         <Stack.Screen name="register" component={RegisterScreen} />
+        <Stack.Screen name="product" component={ProductCategory} />
         <Stack.Screen name="login" component={LoginScreen} />
         <Stack.Screen name="verify" component={VerifyOtp} />
         <Stack.Screen name="profile" component={ProfileScreen} />
