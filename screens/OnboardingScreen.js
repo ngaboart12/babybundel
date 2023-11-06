@@ -12,11 +12,9 @@ const OnboardingScreen = ({ navigation }) => {
     navigation.navigate("homeTab");
   };
   // if you login skip goto home page
-  const { userInfo } = useSelector((state) => state.user);
-  const { skip } = useSelector((state) => state.skip);
-  if (userInfo !== null) {
-    navigation.navigate("homeTab");
-  }
+
+
+
   // if you skip login goto home page
 
   const [fontsLoaded] = useFonts({

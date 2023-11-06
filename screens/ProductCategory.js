@@ -52,6 +52,8 @@ const ProductCategory = ({route,navigation}) => {
         <Text style={{fontSize:20,fontFamily:'Outfit'}}>Category {cate}</Text>
         <Text></Text>
       </View>
+      {products.length==0 ? (<View style={{position:'absolute', bottom:'50%',left:'45%'}}><Text style={{fontSize:40}}>Empty</Text></View>) : ""}
+      
       <View style={styles.productList}>
       {!products ? (
                 <Text>Loading....</Text>
@@ -67,6 +69,7 @@ const ProductCategory = ({route,navigation}) => {
               )}
     
       </View>
+      {products.length==0 ? (<View style={{position:'absolute', bottom:'50%',left:'45%'}}><Text style={{fontSize:40}}>Empty</Text></View>) : ""}
     </View>
   )
 }
