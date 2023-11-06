@@ -54,7 +54,7 @@ const CheckoutScreen = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <AntDesign name="arrowleft" size={24} color="black" />
             </TouchableOpacity>
-            <Text style={{ fontSize: 20, fontWeight: 700 }}>checkout</Text>
+            <Text style={{ fontSize: 20, fontWeight: "700" }}>checkout</Text>
             <Text></Text>
           </View>
         </View>
@@ -84,12 +84,12 @@ const CheckoutScreen = ({ navigation }) => {
                   padding: 6,
                 }}
               >
-                <Text style={{ fontSize: 16, fontWeight: 300, color: "#000" }}>
+                <Text style={{ fontSize: 16, fontWeight: "300", color: "#000" }}>
                   {item.name}
                 </Text>
 
                 <Text
-                  style={{ fontSize: 14, fontWeight: 500, color: "#696969" }}
+                  style={{ fontSize: 14, fontWeight: "500", color: "#696969" }}
                 >
                   {item.price} Rwf
                 </Text>
@@ -172,7 +172,7 @@ const CheckoutScreen = ({ navigation }) => {
                   width: "72%",
                   height: "100%",
                   fontSize: 16,
-                  fontWeight: 600,
+                  fontWeight: "600",
                 }}
               />
 
@@ -184,7 +184,7 @@ const CheckoutScreen = ({ navigation }) => {
                     paddingTop: 2,
                     color: "#FFB648",
                     fontSize: 16,
-                    fontWeight: 600,
+                    fontWeight: "600",
                   }}
                 >
                   Change
@@ -212,7 +212,7 @@ const CheckoutScreen = ({ navigation }) => {
                       }}
                     >
                       <Text
-                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                        style={{ fontSize: 16, color: "#000", fontWeight: "400" }}
                       >
                         Password
                       </Text>
@@ -232,6 +232,40 @@ const CheckoutScreen = ({ navigation }) => {
                           style={{
                             backgroundColor: "transparent",
                             width: "80%",
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        paddingBottom: 15,
+                      }}
+                    >
+                      <Text
+                        style={{ fontSize: 16, color: "#000", fontWeight: "400" }}
+                      >
+                        Password
+                      </Text>
+                      <View
+                        style={{
+                          height: 60,
+                          backgroundColor: "#EAE6E6",
+                          padding: 10,
+
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <TextInput
+                          placeholder="Create Password"
+                          placeholderTextColor="black"
+                          style={{
+                            backgroundColor: "transparent",
+                            width: "80%",
+                            height: "100%",
                           }}
                         />
                       </View>
@@ -279,41 +313,7 @@ const CheckoutScreen = ({ navigation }) => {
                       }}
                     >
                       <Text
-                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
-                      >
-                        Password
-                      </Text>
-                      <View
-                        style={{
-                          height: 60,
-                          backgroundColor: "#EAE6E6",
-                          padding: 10,
-
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <TextInput
-                          placeholder="Create Password"
-                          placeholderTextColor="black"
-                          style={{
-                            backgroundColor: "transparent",
-                            width: "80%",
-                            height: "100%",
-                          }}
-                        />
-                      </View>
-                    </View>
-                    <View
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 6,
-                        paddingBottom: 15,
-                      }}
-                    >
-                      <Text
-                        style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                        style={{ fontSize: 16, color: "#000", fontWeight: "400" }}
                       >
                         Password
                       </Text>
@@ -428,7 +428,7 @@ const CheckoutScreen = ({ navigation }) => {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <Text style={{ fontSize: 16, fontWeight: 500, color: "#000" }}>
+            <Text style={{ fontSize: 16, fontWeight: "500", color: "#000" }}>
               Total Price
             </Text>
             <View style={{ flexDirection: "row", gap: 10 }}>
@@ -489,7 +489,7 @@ const CheckoutScreen = ({ navigation }) => {
                   }}
                 >
                   <Text
-                    style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                    style={{ fontSize: 16, color: "#000", fontWeight: "400" }}
                   >
                     Password
                   </Text>
@@ -523,7 +523,7 @@ const CheckoutScreen = ({ navigation }) => {
                   }}
                 >
                   <Text
-                    style={{ fontSize: 16, color: "#000", fontWeight: 400 }}
+                    style={{ fontSize: 16, color: "#000", fontWeight: "400" }}
                   >
                     Password
                   </Text>
