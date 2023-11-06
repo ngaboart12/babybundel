@@ -19,7 +19,7 @@ import FavScreen from "./FavScreen";
 import MomoPay from "./MomoPay";
 import OrderScreen from "./OrderScreen";
 import ProfileScreen from "./ProfileScreen";
-import MobilePayScreen from "./MobilePayScreen";
+
 import NotoficationScreen from "./NotoficationScreen";
 import { useSelector } from "react-redux";
 import VerifyOtp from "./verifyOtp";
@@ -205,7 +205,7 @@ export default function Navigation() {
         <Stack.Screen name="momopay" component={MomoPay} />
         <Stack.Screen name="category" component={CategoryScreen} />
         <Stack.Screen name="checkout" component={CheckoutScreen} />
-        <Stack.Screen name="mobipay" component={MobilePayScreen} />
+
         <Stack.Screen name="single" component={SingelProduct} />
         <Stack.Screen name="popular" component={PopularScreen} />
         <Stack.Screen name="assist" component={AssistanceScreen} />

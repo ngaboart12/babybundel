@@ -43,15 +43,7 @@ const CheckoutScreen = ({ navigation }) => {
     // navigation.navigate("order");
     setModalcheckout(!modalcheckout);
   };
-  // const mtnPay = () => {
-  //   setModalMTN(!modalMTN);
-  //   setModalcheckout(!modalcheckout);
-  // };
-  // const mobi = () => {
-  //   navigation.navigate("mobipay");
 
-  //   setModalcheckout(!modalcheckout);
-  // };
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={{ gap: 15, paddingTop: 38 }}>
