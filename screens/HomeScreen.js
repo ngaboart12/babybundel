@@ -21,7 +21,13 @@ import { logout } from "../redux/Slices/userSlice";
 import axios from "axios";
 import io from "socket.io-client";
 import { addToNot } from "../redux/Slices/notSlice";
-import { getFirestore, collection, getDocs, limit, query } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  limit,
+  query,
+} from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { StatusBar } from "expo-status-bar";
 
@@ -80,7 +86,7 @@ const HomeScreen = ({ navigation }) => {
           ...doc.data(),
         }));
 
-       setCategory(productsData);
+        setCategory(productsData);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -102,7 +108,7 @@ const HomeScreen = ({ navigation }) => {
   const numColumns2 = 2;
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar style="dark"/>
+      <StatusBar style="dark" />
       <View style={styles.homeContainer}>
         <View style={styles.navbar}>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -136,80 +142,6 @@ const HomeScreen = ({ navigation }) => {
             onPress={() => navigation.navigate("cart")}
             style={{ display: "flex", flexDirection: "row" }}
           >
-            {/* if (falsevalue.length > 0) {
-                return (
-                  <View>
-                    <Svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <Path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M12 17.8476C17.6392 17.8476 20.2481 17.1242 20.5 14.2205C20.5 11.3188 18.6812 11.5054 18.6812 7.94511C18.6812 5.16414 16.0452 2 12 2C7.95477 2 5.31885 5.16414 5.31885 7.94511C5.31885 11.5054 3.5 11.3188 3.5 14.2205C3.75295 17.1352 6.36177 17.8476 12 17.8476Z"
-                        stroke="#8E8D8D"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <Path
-                        d="M14.3888 20.8572C13.0247 22.3719 10.8967 22.3899 9.51947 20.8572"
-                        stroke="#8E8D8D"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </Svg>
-                    <View
-                      style={{
-                        left: 12,
-                        top: 0,
-                        position: "absolute",
-                        backgroundColor: "darkred",
-                        width: 15,
-                        height: 15,
-                        borderRadius: 10,
-                        alignItems: "center",
-                      }}
-                    >
-                      <Text style={{ textAlign: "center", color: "white" }}>
-                        {falsevalue.length}
-                      </Text>
-                    </View>
-                  </View>
-                );
-              } else {
-                return (
-                  <Svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <Path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12 17.8476C17.6392 17.8476 20.2481 17.1242 20.5 14.2205C20.5 11.3188 18.6812 11.5054 18.6812 7.94511C18.6812 5.16414 16.0452 2 12 2C7.95477 2 5.31885 5.16414 5.31885 7.94511C5.31885 11.5054 3.5 11.3188 3.5 14.2205C3.75295 17.1352 6.36177 17.8476 12 17.8476Z"
-                      stroke="#8E8D8D"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <Path
-                      d="M14.3888 20.8572C13.0247 22.3719 10.8967 22.3899 9.51947 20.8572"
-                      stroke="#8E8D8D"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </Svg>
-                );
-              } */}
-
             <Svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -374,7 +306,10 @@ const HomeScreen = ({ navigation }) => {
             </View>
             <View style={styles.categoryContainAll}>
               <View style={styles.categoryContain}>
-                <TouchableOpacity onPress={()=> navigation.navigate('product', {cate:'Toys'})}
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("product", { cate: "Toys" })
+                  }
                   style={{
                     backgroundColor: "#FFF4E3",
                     height: 150,
@@ -480,54 +415,59 @@ const HomeScreen = ({ navigation }) => {
                   </Svg>
                 </TouchableOpacity>
                 <View style={{ flexWrap: "wrap", gap: 8 }}>
-                <FlatList
-                numColumns={numColumns2}
-                data={category}
-                renderItem={({ item, index }) => {
-                  return (
-                    <TouchableOpacity key={index} onPress={()=> navigation.navigate('product', {cate:`${item.catName}`})}
-                    style={{
-                      backgroundColor: "#FFF4E3",
-                      height: 70,
-                      width: 110,
-                      alignItems: "center",
-                      padding: 5,
-                      gap: 7,
+                  <FlatList
+                    numColumns={numColumns2}
+                    data={category}
+                    renderItem={({ item, index }) => {
+                      return (
+                        <TouchableOpacity
+                          key={index}
+                          onPress={() =>
+                            navigation.navigate("product", {
+                              cate: `${item.catName}`,
+                            })
+                          }
+                          style={{
+                            backgroundColor: "#FFF4E3",
+                            height: 70,
+                            width: 110,
+                            alignItems: "center",
+                            padding: 5,
+                            gap: 7,
+                          }}
+                        >
+                          <Svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <Path
+                              d="M22.7001 8.91041L19.7331 7.75255L20.833 16.7839L11.2021 19.2L10.095 10.0765L7.45226 12.6525L4.66669 6.77708L9.16361 2.40999L11.5649 1.7952C11.6823 2.60452 12.0141 3.31683 12.4905 3.78191C12.9669 4.247 13.5506 4.42851 14.1184 4.28817C14.6863 4.14783 15.194 3.69661 15.5344 3.02967C15.8748 2.36272 16.0214 1.53217 15.9433 0.713161L18.7874 0L24 2.04931L22.7001 8.91041Z"
+                              fill="#FFB648"
+                            />
+                            <Path
+                              d="M14.6667 23.0971L8.95264 24L8.11311 13.07L5.3929 23.6322L0 20.7727L3.86647 5.75999L13.4441 7.18771L14.6667 23.0971Z"
+                              fill="#F9DE67"
+                            />
+                          </Svg>
+                          <Text
+                            style={{
+                              textAlign: "center",
+                              fontWeight: 300,
+                              fontSize: 14,
+                            }}
+                          >
+                            {item.catName}
+                          </Text>
+                        </TouchableOpacity>
+                      );
                     }}
-                  >
-                    <Svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <Path
-                        d="M22.7001 8.91041L19.7331 7.75255L20.833 16.7839L11.2021 19.2L10.095 10.0765L7.45226 12.6525L4.66669 6.77708L9.16361 2.40999L11.5649 1.7952C11.6823 2.60452 12.0141 3.31683 12.4905 3.78191C12.9669 4.247 13.5506 4.42851 14.1184 4.28817C14.6863 4.14783 15.194 3.69661 15.5344 3.02967C15.8748 2.36272 16.0214 1.53217 15.9433 0.713161L18.7874 0L24 2.04931L22.7001 8.91041Z"
-                        fill="#FFB648"
-                      />
-                      <Path
-                        d="M14.6667 23.0971L8.95264 24L8.11311 13.07L5.3929 23.6322L0 20.7727L3.86647 5.75999L13.4441 7.18771L14.6667 23.0971Z"
-                        fill="#F9DE67"
-                      />
-                    </Svg>
-                    <Text
-                      style={{
-                        textAlign: "center",
-                        fontWeight: 300,
-                        fontSize: 14,
-                      }}
-                    >
-                      {item.catName}
-                    </Text>
-                  </TouchableOpacity>
-                  );
-                }}
-                scrollEnabled={false}
-              />
+                    scrollEnabled={false}
+                  />
                 </View>
               </View>
-             
             </View>
           </View>
           <View style={styles.hotsale}>
@@ -577,7 +517,13 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={{ fontSize: 14, color: "#FFB648" }}>View all</Text>
               </TouchableOpacity>
             </View>
-            <View style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+            <View
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               {!products ? (
                 <Text>Loading....</Text>
               ) : (

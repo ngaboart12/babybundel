@@ -271,7 +271,6 @@ const RegisterScreen = ({ navigation }) => {
                       />
                     </Svg>
 
-                    {/* <AntDesign name="google" size={32} color="orange" /> */}
                     <Text style={{ fontSize: 16 }}>Sign In With Google</Text>
                   </TouchableOpacity>
                 </View>
