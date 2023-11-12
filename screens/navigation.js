@@ -28,6 +28,8 @@ import AssistanceScreen from "./assisstant/AssistanceScreen";
 import AssitProductScreen from "./assisstant/AssProductListScreen";
 import AsscategoryScreen from "./assisstant/AssCategoryScreen";
 import ProductCategory from "./ProductCategory";
+import ConfirmPayment from "./ConfirmPayement";
+import AddressScreen from "./AdressScreen";
 
 const Stack = createStackNavigator();
 const Bottom = createMaterialBottomTabNavigator();
@@ -206,7 +208,9 @@ export default function Navigation() {
         <Stack.Screen name="category" component={CategoryScreen} />
         <Stack.Screen name="checkout" component={CheckoutScreen} />
 
+        <Stack.Screen name="address" component={AddressScreen} />
         <Stack.Screen name="single" component={SingelProduct} />
+        <Stack.Screen name="confirm" component={ConfirmPayment} />
         <Stack.Screen name="popular" component={PopularScreen} />
         <Stack.Screen name="assist" component={AssistanceScreen} />
         <Stack.Screen name="asscategory" component={AsscategoryScreen} />

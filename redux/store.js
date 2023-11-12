@@ -7,6 +7,7 @@ import wishSlice from './Slices/wishSlice';
 import userSlice from './Slices/userSlice';
 import skipSlice from './Slices/skipSlice';
 import notSlice from './Slices/notSlice';
+import addressSlice from './Slices/addressSlice';
 
 
 
@@ -18,6 +19,7 @@ const persistConfig = {
   };
 const reducer = combineReducers({
     cart: cartReducer,
+    address:addressSlice,
     wish: wishSlice,
     user: userSlice,
     skip: skipSlice,
