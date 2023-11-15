@@ -12,11 +12,13 @@ import { AntDesign } from "@expo/vector-icons";
 import { Path, Svg } from "react-native-svg";
 
 const CartScreen = ({ navigation }) => {
+ 
   //const [isChecked, setIsChecked] = useState(false);
   const cart = useSelector((state) => state.cart.cart);
   const calculateTotalAmount = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
+  console.log(cart)
   const dispatch = useDispatch();
   const [isChecked, setChecked] = useState(false);
   return (

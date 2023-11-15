@@ -21,10 +21,20 @@ import {
 
 import { AntDesign } from "@expo/vector-icons";
 import { Path, Svg } from "react-native-svg";
+import { SelectList } from "react-native-dropdown-select-list";
 
 const CheckoutScreen = ({ route,navigation, isVisible, onClose, onSelectPaymentMethod}) => {
+
+  const [selectedAddress, setSelectedAddress] = useState("");
+  const { address } = useSelector((state) => state.address);
+  console.log(address)
+  const handleSelectAddress = (address) => {
+    setSelectedAddress(address);
+    console.log(selectedAddress)
+  };
+ 
   const [selectedMethod, setSelectedMethod] = useState(null);
-  const { addressItem } = route.params;
+  // const { addressItem } = route.params;
 
   const paymentMethods = [
     { id: 'visa', name: 'Visa', icon: '💳' },
@@ -34,6 +44,7 @@ const CheckoutScreen = ({ route,navigation, isVisible, onClose, onSelectPaymentM
 
   const handlePaymentMethodSelect = (method) => {
     setSelectedMethod(method);
+    setModalcheckout(!modalcheckout);
     navigation.navigate('confirm', { paymentMethod: method })
   };
   const cart = useSelector((state) => state.cart.cart);
@@ -54,6 +65,16 @@ const CheckoutScreen = ({ route,navigation, isVisible, onClose, onSelectPaymentM
     navigation.navigate("order");
     setModalcheckout(!modalcheckout);
   };
+  const [selected, setSelected] = useState("");
+  const data = [
+    {key:'1', value:'Mobiles', disabled:true},
+    {key:'2', value:'Appliances'},
+    {key:'3', value:'Cameras'},
+    {key:'4', value:'Computers', disabled:true},
+    {key:'5', value:'Vegetables'},
+    {key:'6', value:'Diary Products'},
+    {key:'7', value:'Drinks'},
+]
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={{ gap: 15, paddingTop: 38 }}>
@@ -171,26 +192,21 @@ const CheckoutScreen = ({ route,navigation, isVisible, onClose, onSelectPaymentM
             </Text>
             <View
               style={{
-                height: 60,
-                backgroundColor: "#EAE6E6",
+                
+                backgroundColor: "lightgray",
                 padding: 18,
                 flexDirection: "row",
                 justifyContent: "space-between",
               }}
             >
-              <TextInput
-                value={addressItem ? addressItem.address : 'Kigali-Kabeza'}
-                placeholderTextColor={"black"}
-                style={{
-                  backgroundColor: "transparent",
-                  width: "72%",
-                  height: "100%",
-                  fontSize: 16,
-                  fontWeight: "600",
-                }}
-              />
+               <SelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={address.map((address) => ({ value: address.address, label: address.address }))}  
+        save="value"
+    />
+              
 
-              <TouchableOpacity onPress={() => navigation.navigate('address')}>
+              <TouchableOpacity onPress={() => navigation.navigate('address', { onSelectAddress: handleSelectAddress })}>
                 <Text
                   style={{
                     alignSelf: "center",

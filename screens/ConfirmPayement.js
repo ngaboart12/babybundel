@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import { useSelector } from "react-redux";
 import {  collection, addDoc } from 'firebase/firestore'
-import { db } from "../firebaseConfig";
+import { auth, db } from "../firebaseConfig";
 
 const ConfirmPayment = ({ navigation,route }) => {
     const { paymentMethod } = route.params;
@@ -17,7 +17,7 @@ const ConfirmPayment = ({ navigation,route }) => {
     </View>
   );
   const customerName = "John Doe"; 
-  const customerEmail = "john@example.com"
+  const customerEmail = auth.currentUser.email
   const addOrderToFirestore = async () => {
     try {
       const orderData = {
